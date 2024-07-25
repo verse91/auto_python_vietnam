@@ -50,7 +50,7 @@
   ```
 + Như bạn có thể đọc phần comment của code mình đã giải thích kỹ vì sao lại thế.
 - Và để truy cập 1 web cụ thể thì làm như nào?
-  + Đơn giản là thêm `driver.get('https://yourwebsite.com')` vào với yourwebsite là web bạn cần mở.
+  + Đơn giản là thêm `driver.get('https://yourwebsite.com')` vào với `yourwebsite` là web bạn cần mở.
   ```
     from selenium import webdriver
     # Khởi tạo trình duyệt mà không cần chỉ định đường dẫn đến chromedriver
@@ -64,7 +64,7 @@
   + Được rồi, đến đây thì ta đã biết cách mở 1 web lên và giờ ta phải học cách thao tác với nó.
 ## 4. Thao tác:
 #### Có rất nhiều thao tác bạn có thể làm với Selenium nhưng phần lớn là code tool check mail/pass,... Và mình sẽ giới thiệu nó trước
-- Đầu tiên, thao tác nhấn và nhập
+- Đầu tiên, thao tác nhấn:
   + Với thao tác nhấn, ta sẽ dùng code như sau:
     ```
     driver.find_element(By.XPATH, '/html/body/header/div/div[2]/div[1]/a').click() # Element của nút login mà bạn thấy trên website Pinterest
@@ -87,4 +87,58 @@
   + Được rồi, tiếp theo đó tại phần tử đang được trỏ vào, ta nhấn chuột phải và đưa chuột vào nút copy, chọn Copy XPATH. Nó sẽ có dạng đường dẫn như sau `//*[@id="__PWS_ROOT__"]/div/div[1]/div/div[1]/div/div[2]/div[2]/button/div/div`
   <p align="center"><img src="https://github.com/user-attachments/assets/de6246c6-c653-4f56-b36e-7924f6d875d1" width="80%" height="auto"/></p>
   <p align="center"><i>Copy XPATH</i></p>
+  
+  + Rồi đó, copy và dán vào thôi nó sẽ ra `driver.find_element(By.XPATH, '/html/body/header/div/div[2]/div[1]/a').click()`
+  + Và hàm `.click()` là để nhấn vào (quá rõ ràng)
+  + Tương tự bạn sẽ biết là sau khi nhấn vào login sẽ sẽ hiện ra 1 ô đăng nhập
+  + Mình có một lưu ý nhỏ ở đây là các bạn phải tự tư duy, lấy phần tử cũng như tự hình dung trong đầu các thao tác
+  + Một số web nó sẽ gộp phần đăng ký và đăng nhập vào một nút, xong phải nhấp tiếp nút đăng nhập, lúc này cần set delay với `sleep()`
+  + Khó hiểu quá à? Ví dụ ở đây mình sẽ dùng website `https://client.123host.vn/` với nút đăng nhập nó lại nằm trong 1 nút dăng nhập khác. Khi đó ta thực hiện code như sau
+    ```
+    driver.find_element(By.XPATH, '/html/body/header/div/div[2]/div[1]/a').click() # Nút đăng nhập thứ nhất
+    driver.find_element(By.XPATH,'/html/body/header/div/div[2]/div[1]/ul/div/li[2]/a').click() # Nút đăng nhập thứ hai
+    ```
+  <p align="center"><img src="https://github.com/user-attachments/assets/0b30767a-8212-41c7-8881-529b8b801e0a" width="80%" height="auto"/></p>
+  <p align="center"><i>Nói chung là phải tự tư duy nhé :)</i></p>
+- Tiếp theo là thao tác nhập:
+  <img width="40%" align='right' src="https://github.com/user-attachments/assets/019e1207-9588-4059-a14c-a6b76efb8016">
+  
+  + Với phần nhập, ở mức cơ bản ta dùng hàm `send_keys("...")` với `...` kà thứ bạn muốn nhập
+  + Thường là username hoặc mail gì đó và password
+  + Công việc lấy phần tử sẽ tương tự nhưng khác một chút về vấn đề thay vì dùng XPATH ta dùng `ID` hoặc `NAME` hoặc một vài các phần tử khác như hình bên
+  + Bạn phải tự suy nghĩ mình sẽ lấy phần nào
+  + Ở đây trong website `https://pinterest.com` mình sẽ lấy `ID` với `email` và `password`
 
+ 
+<details>
+  <summary>Show các phần tử</summary>
+
+- By.XPATH
+- By.ID
+- By.NAME
+- By.CSS_SELECTOR
+- By.CLASS_NAME
+- By.TAG_NAME
+- By.LINK_TEXT
+- By.PARTIAL_LINK_TEXT
+- By.CUSTOM
+
+</details>
+
+
+  <p align="center"><img src="https://github.com/user-attachments/assets/aaf12970-1ec5-41fe-88ea-a96867f7a99a" width="80%" height="auto"/></p>
+  <p align="center"><i>Tương tự</i></p>
+  <p align="center"><img src="https://github.com/user-attachments/assets/e3c5a18d-c129-48d5-ab65-d726da1f76b5" width="80%" height="auto"/></p>
+  <p align="center"><i>Lấy ID là email</i></p>
+
+  + Thì ở đây mình dùng phần tử `ID="email"` để dùng
+  + Do đó ta có đoạn code như sau `driver.find_element(By.ID, 'email').send_keys("tendangnhap@mail.com")`
+  + Và tương tự với password `driver.find_element(By.ID, 'password').send_keys("matkhaucuatoi)`
+  + Mặt khác, ta có thể tìm theo `NAME` ví dụ như ở website `https://client.123host.vn/` ta code như sau:
+    ```
+    driver.find_element(By.NAME, 'username').send_keys("tendangnhap@mail.com")
+    driver.find_element(By.NAME, 'password').send_keys("matkhaucuatoi)
+    ```
+  + Đơn giản là thay `ID` bằng `NAME` thôi và nhớ phải theo đúng `NAME="username"`. Là username chứ không phải email như Pinterest.
+  <p align="center"><img src="https://github.com/user-attachments/assets/c2175cce-5e0a-4c40-8530-c16f2eb34616" width="80%" height="auto"/></p>
+  <p align="center"><i>NAME</i></p
