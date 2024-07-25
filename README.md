@@ -125,7 +125,6 @@
 
 </details>
 
-
   <p align="center"><img src="https://github.com/user-attachments/assets/aaf12970-1ec5-41fe-88ea-a96867f7a99a" width="80%" height="auto"/></p>
   <p align="center"><i>Tương tự</i></p>
   <p align="center"><img src="https://github.com/user-attachments/assets/e3c5a18d-c129-48d5-ab65-d726da1f76b5" width="80%" height="auto"/></p>
