@@ -1,13 +1,19 @@
-# Quy trình học code Tool Auto Python 2024
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/659e8acc-2fda-4ad9-a9ac-525704fba4ee" width="80%" height="auto"/>
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=700&size=19&pause=500&color=FFCE76&width=435&lines=Quy+trình+code+tool+auto+Python" alt="Typing SVG" />
+  </a>
+</div>
 
 ## 1. Giới thiệu
-- Tác giả: [Verse](https://github.com/terris91)
-- Cột mốc thời gian: 2024
-- Đôi lời mình muốn nói trước khi bắt đầu:
+- **Tác giả**: [Verse](https://github.com/terris91)
+- **Cột mốc thời gian**: 2024
+- **Đôi lời mình muốn nói trước khi bắt đầu**:
   + Các hướng dẫn cho Selenium tiếng Việt toàn ở phiên bản cũ thành ra mình làm DOC này cho phiên bản `>=4.0`.
   + Vì sao ư? Vì Selenium `4.0+` có cập nhật không cần dùng file `WebDriver.exe` nữa. (Ví dụ như: ChromeDriver.exe)
   + Mình chỉ tập trung vào tool auto nhập liệu là chính. (check account)
-- Ở DOC này mình sẽ dùng Chrome là trình duyệt chính vì tính phổ biến.
+- **Ở DOC này mình sẽ dùng Chrome là trình duyệt chính vì tính phổ biến**.
 
 ## 2. Chuẩn bị
 #### Trước khi bắt đầu vào việc code tool ta cần chuẩn bị những thứ như sau:
@@ -18,9 +24,11 @@
 - Cuối cùng là một cái đầu tỉnh táo và một tư duy tốt cho việc code.
 
 ## 3. Làm quen với Selenium:
+
+<img width="50%" align='right' src="https://github.com/user-attachments/assets/4a5b4e53-20b1-467e-9aea-7554e9f6ff78">
+
 - Đầu tiên là thư viện Selenium. Thư viện này giúp chúng ta tự động hoá các quá trình sử dụng trình duyệt. Giúp các bạn code tool auto (phần lớn là để nhập liệu hoặc auto-clicker).
 - Các tool Python auto hiện nay sử dụng Selenium cực kỳ nhiều.
-
 - Bắt đầu với thư viện. Ở phần import hãy chuẩn bị như sau (lưu ý là càng về sau thì còn sử dụng nhiều thư viện khác):
   ```
   from selenium import webdriver
