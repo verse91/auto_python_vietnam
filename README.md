@@ -8,7 +8,7 @@
 
 > [!NOTE]
 > # Parts:
-> - [Giới thiệu](#giới-thiệu)
+> - [Giới thiệu](#1-giới-thiệu)
 > - 
 > - 
 
