@@ -1,32 +1,36 @@
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/659e8acc-2fda-4ad9-a9ac-525704fba4ee" width="80%" height="auto"/>
+  <img src="https://github.com/user-attachments/assets/659e8acc-2fda-4ad9-a9ac-525704fba4ee" width="100%" height="auto"/>
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=700&size=19&pause=500&color=FFCE76&width=435&lines=Quy+trình+code+tool+auto+Python+Selenium" alt="Typing SVG" />
   </a>
 </div>
 
 > [!NOTE]
-> # Parts:
+> # Danh mục:
 > - [Giới thiệu](#1-giới-thiệu)
 > - [Chuẩn bị](#2-chuẩn-bị)
 > - [Làm quen với Selenium](#3-làm-quen-với-selenium)
 > - [Thao tác](#4-thao-tác)
+>   + [Thao tác nhấn](#đầu-tiên-là-thao-tác-nhấn)
+>   + [Thao tác nhập](#tiếp-theo-là-thao-tác-nhập)
 
 
 ## 1. Giới thiệu
 - **Tác giả**: [Verse](https://github.com/terris91)
 - **Cột mốc thời gian**: 2024
+- **Full Docs**: [Selenium with Python](https://selenium-python.readthedocs.io/) (gốc)
 - **Đôi lời mình muốn nói trước khi bắt đầu**:
   + Các hướng dẫn cho Selenium tiếng Việt toàn ở phiên bản cũ thành ra mình làm DOC này cho phiên bản `>=4.0`.
   + Vì sao ư? Vì Selenium `4.0+` có cập nhật không cần dùng file `WebDriver.exe` nữa. (Ví dụ như: ChromeDriver.exe)
-  + Mình chỉ tập trung vào tool auto nhập liệu là chính. (check account)
+  + Mình chỉ tập trung vào tool auto nhập liệu là chính. (account checker, register)
+  + Các docs khác toàn cho ví dụ là `https://example.com` rất trừu tượng, khó hiểu. Mình cho ví dụ cụ thể để bạn dễ nắm bắt hơn.
 - **Ở DOC này mình sẽ dùng Chrome là trình duyệt chính vì tính phổ biến**.
 
 ## 2. Chuẩn bị
 #### Trước khi bắt đầu vào việc code tool ta cần chuẩn bị những thứ như sau:
 - [Python](https://www.python.org/): Nên cài đặt phiên bản `3.1x`. (Ở đây mình dùng `3.11`)
-- [Code-editor](https://code.visualstudio.com/): Bất kì phần mềm nào, VSCode, Sublime Text, ... Và lưu ý là bạn hãy set up đầy đủ cho Python nhé. (Ở đây mình dùng VSCode)
+- Code-editor/IDE: Bất kì phần mềm nào, VSCode, Sublime Text, ... Và lưu ý là bạn hãy set up đầy đủ cho Python nhé. (Ở đây mình dùng [VSCode](https://code.visualstudio.com/) hoặc [Cursor](https://www.cursor.com/))
 - [Selenium](https://pypi.org/project/selenium/): `pip install selenium`.
 - Đã trang bị sẵn kiến thức Python cơ bản.
 - Cuối cùng là một cái đầu tỉnh táo và một tư duy tốt cho việc code.
@@ -38,7 +42,7 @@
 - Đầu tiên là thư viện Selenium. Thư viện này giúp chúng ta tự động hoá các quá trình sử dụng trình duyệt. Giúp các bạn code tool auto (phần lớn là để nhập liệu hoặc auto-clicker).
 - Các tool Python auto hiện nay sử dụng Selenium cực kỳ nhiều.
 - Bắt đầu với thư viện. Ở phần import hãy chuẩn bị như sau (lưu ý là càng về sau thì còn sử dụng nhiều thư viện khác):
-  ```
+  ```python
   from selenium import webdriver
   from time import sleep
   import os
@@ -48,7 +52,7 @@
   + Với dòng `from selenium.webdriver.common.by import By`, ta dùng nó để tìm các phần tử (Element) trên các trang web. Ví dụ như các nút, các ô chứa nơi cần nhập liệu, cần bấm vào.
  
 - Đến với những dòng code đầu tiên mình sẽ giới thiệu như sau:
-  ```
+  ```python
   from selenium import webdriver
   # Khởi tạo trình duyệt mà không cần chỉ định đường dẫn đến chromedriver
   driver = webdriver.Chrome() # driver là tên biến bạn đặt
@@ -59,7 +63,7 @@
 + Như bạn có thể đọc phần comment của code mình đã giải thích kỹ vì sao lại thế.
 - Và để truy cập 1 web cụ thể thì làm như nào?
   + Đơn giản là thêm `driver.get('https://yourwebsite.com')` vào với `yourwebsite` là web bạn cần mở.
-  ```
+  ```python
     from selenium import webdriver
     # Khởi tạo trình duyệt mà không cần chỉ định đường dẫn đến chromedriver
     driver = webdriver.Chrome()
@@ -72,9 +76,9 @@
   + Được rồi, đến đây thì ta đã biết cách mở 1 web lên và giờ ta phải học cách thao tác với nó.
 ## 4. Thao tác:
 #### Có rất nhiều thao tác bạn có thể làm với Selenium nhưng phần lớn là code tool check mail/pass,... Và mình sẽ giới thiệu nó trước
-- Đầu tiên, thao tác nhấn:
+### Đầu tiên là thao tác nhấn:
   + Với thao tác nhấn, ta sẽ dùng code như sau:
-    ```
+    ```python
     driver.find_element(By.XPATH, '/html/body/header/div/div[2]/div[1]/a').click() # Element của nút login mà bạn thấy trên website Pinterest
     ```
   + Từ từ đã nào, chưa gì đã 1 dãy code dài như thế. Để mình giải thích
@@ -100,18 +104,27 @@
   + Và hàm `.click()` là để nhấn vào (quá rõ ràng)
   + Tương tự bạn sẽ biết là sau khi nhấn vào login sẽ sẽ hiện ra 1 ô đăng nhập
   + Mình có một lưu ý nhỏ ở đây là các bạn phải tự tư duy, lấy phần tử cũng như tự hình dung trong đầu các thao tác
-  + Một số web nó sẽ gộp phần đăng ký và đăng nhập vào một nút, xong phải nhấp tiếp nút đăng nhập, lúc này cần set delay với `sleep()`
+  + Một số web nó sẽ gộp phần đăng ký và đăng nhập vào một nút, xong phải nhấp tiếp nút đăng nhập, lúc này cần set delay với `sleep()` (hoặc là không bạn có thể cân xét)
   + Khó hiểu quá à? Ví dụ ở đây mình sẽ dùng website `https://client.123host.vn/` với nút đăng nhập nó lại nằm trong 1 nút dăng nhập khác. Khi đó ta thực hiện code như sau
-    ```
+    ```python
     driver.find_element(By.XPATH, '/html/body/header/div/div[2]/div[1]/a').click() # Nút đăng nhập thứ nhất
+    time.sleep(1) # Delay 1 giây (Nhớ import time lên đầu file code)
     driver.find_element(By.XPATH,'/html/body/header/div/div[2]/div[1]/ul/div/li[2]/a').click() # Nút đăng nhập thứ hai
     ```
+> [!TIP]
+  > Bạn nên viết 1 hàm click để rút gọn lại code cho dễ đọc
+  > ```python
+  > def click(xpath):
+  >  driver.find_element(By.XPATH, xpath).click()
+  > click('/html/body/div[2]/div/div[2]/div[1]/div/div[1]/button')
+  > ```
   <p align="center"><img src="https://github.com/user-attachments/assets/0b30767a-8212-41c7-8881-529b8b801e0a" width="80%" height="auto"/></p>
   <p align="center"><i>Nói chung là phải tự tư duy nhé :)</i></p>
-- Tiếp theo là thao tác nhập:
+  
+### Tiếp theo là thao tác nhập:
   <img width="40%" align='right' src="https://github.com/user-attachments/assets/019e1207-9588-4059-a14c-a6b76efb8016">
   
-  + Với phần nhập, ở mức cơ bản ta dùng hàm `send_keys("...")` với `...` kà thứ bạn muốn nhập
+  + Với phần nhập, ở mức cơ bản ta dùng hàm `send_keys("...")` với `...` là thứ bạn muốn nhập
   + Thường là username hoặc mail gì đó và password
   + Công việc lấy phần tử sẽ tương tự nhưng khác một chút về vấn đề thay vì dùng XPATH ta dùng `ID` hoặc `NAME` hoặc một vài các phần tử khác như hình bên
   + Bạn phải tự suy nghĩ mình sẽ lấy phần nào
@@ -121,15 +134,15 @@
 <details>
   <summary>Show các phần tử</summary>
 
-- By.XPATH
-- By.ID
-- By.NAME
-- By.CSS_SELECTOR
-- By.CLASS_NAME
-- By.TAG_NAME
-- By.LINK_TEXT
-- By.PARTIAL_LINK_TEXT
-- By.CUSTOM
+- `By.XPATH`
+- `By.ID`
+- `By.NAME`
+- `By.CSS_SELECTOR`
+- `By.CLASS_NAME`
+- `By.TAG_NAME`
+- `By.LINK_TEXT`
+- `By.PARTIAL_LINK_TEXT`
+- `By.CUSTOM`
 
 </details>
 
@@ -142,7 +155,7 @@
   + Do đó ta có đoạn code như sau `driver.find_element(By.ID, 'email').send_keys("tendangnhap@mail.com")`
   + Và tương tự với password `driver.find_element(By.ID, 'password').send_keys("matkhaucuatoi)`
   + Mặt khác, ta có thể tìm theo `NAME` ví dụ như ở website `https://client.123host.vn/` ta code như sau:
-    ```
+    ```python
     driver.find_element(By.NAME, 'username').send_keys("tendangnhap@mail.com")
     driver.find_element(By.NAME, 'password').send_keys("matkhaucuatoi)
     ```
