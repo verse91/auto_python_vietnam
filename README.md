@@ -9,8 +9,9 @@
 > [!NOTE]
 > # Parts:
 > - [Giới thiệu](#1-giới-thiệu)
-> - 
-> - 
+> - [Chuẩn bị](#2-chuẩn-bị)
+> - [Làm quen với Selenium](#3-làm-quen-với-selenium)
+> - [Thao tác](#4-thao-tác)
 
 
 ## 1. Giới thiệu
@@ -30,7 +31,7 @@
 - Đã trang bị sẵn kiến thức Python cơ bản.
 - Cuối cùng là một cái đầu tỉnh táo và một tư duy tốt cho việc code.
 
-## 3. Làm quen với Selenium:
+## 3. Làm quen với Selenium
 
 <img width="50%" align='right' src="https://github.com/user-attachments/assets/4a5b4e53-20b1-467e-9aea-7554e9f6ff78">
 
