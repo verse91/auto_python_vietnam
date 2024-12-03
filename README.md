@@ -6,6 +6,13 @@
   </a>
 </div>
 
+> [!NOTE]
+> # Parts:
+> - [Giới thiệu](#giới-thiệu)
+> - 
+> - 
+
+
 ## 1. Giới thiệu
 - **Tác giả**: [Verse](https://github.com/terris91)
 - **Cột mốc thời gian**: 2024
